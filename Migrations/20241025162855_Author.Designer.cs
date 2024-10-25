@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stetco_Bianca_Lab2.Data;
 
@@ -11,9 +12,11 @@ using Stetco_Bianca_Lab2.Data;
 namespace Stetco_Bianca_Lab2.Migrations
 {
     [DbContext(typeof(Stetco_Bianca_Lab2Context))]
-    partial class Stetco_Bianca_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20241025162855_Author")]
+    partial class Author
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
