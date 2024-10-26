@@ -21,7 +21,7 @@ namespace Stetco_Bianca_Lab2.Pages.Books
         }
 
         [BindProperty]
-        public Book Book { get; set; } = default!;
+        public Book Book { get; set; } //= default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -45,6 +45,11 @@ namespace Stetco_Bianca_Lab2.Pages.Books
 
             PopulateAssignedCategoryData(_context, Book);
 
+            var authorList = _context.Author.Select(x => new
+            {
+                x.ID,
+                FullName = x.LastName + " " + x.FirstName
+            });
 
             ViewData["AuthorID"] = new SelectList(_context.Author, "ID", "AuthorName");
             ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID", "PublisherName");

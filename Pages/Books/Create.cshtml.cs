@@ -19,6 +19,7 @@ namespace Stetco_Bianca_Lab2.Pages.Books
             _context = context;
         }
 
+
         public IActionResult OnGet()
         {
             ViewData["AuthorID"] = new SelectList(_context.Author, "ID", "AuthorName");
@@ -32,18 +33,30 @@ namespace Stetco_Bianca_Lab2.Pages.Books
             return Page();
         }
 
+        
         [BindProperty]
-        public Book Book { get; set; } = default!;
+        public Book Book { get; set; } //= default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OOnPostAsync(string[] selectedCategories)
+
+        public async Task<IActionResult> OnPostAsync(string[] selectedCategories)
         {
             if (!ModelState.IsValid)
             {
+                PopulateAssignedCategoryData(_context, new Book());
+
                 return Page();
             }
 
-            var newBook = new Book();
+            var newBook = new Book
+            {
+                Title = Book.Title,
+                AuthorID = Book.AuthorID,
+                Price = Book.Price,
+                PublishingDate = Book.PublishingDate,
+                PublisherID = Book.PublisherID,
+                BookCategories = new List<BookCategory>()
+            };
+
             if (selectedCategories != null)
             {
                 newBook.BookCategories = new List<BookCategory>();
