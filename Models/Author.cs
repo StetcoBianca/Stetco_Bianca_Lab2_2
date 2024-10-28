@@ -1,4 +1,6 @@
-﻿namespace Stetco_Bianca_Lab2.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Stetco_Bianca_Lab2.Models
 {
     public class Author
     {
@@ -8,6 +10,15 @@
         public string AuthorName
         {
             get { return $"{FirstName} {LastName}"; }
+        }
+
+        [Display(Name = "Full Name")]
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
         }
 
         public ICollection<Book>? Books { get; set; }
