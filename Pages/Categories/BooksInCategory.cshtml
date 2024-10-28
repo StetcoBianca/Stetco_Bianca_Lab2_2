@@ -1,0 +1,26 @@
+﻿@page "{id:int}"
+@model Stetco_Bianca_Lab2.Pages.Categories.BooksInCategoryModel
+
+@{
+    ViewData["Title"] = "Books in Category";
+}
+
+<h1>Books in @Model.Category.CategoryName</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => book.Title)</td>
+                <td>@Html.DisplayFor(model => book.Author.AuthorName)</td>
+            </tr>
+        }
+    </tbody>
+</table>
