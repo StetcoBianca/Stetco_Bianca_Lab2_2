@@ -9,6 +9,7 @@
 
 <p>
     <a asp-page="Create">Create New</a>
+
 </p>
 <table class="table">
     <thead>
@@ -20,8 +21,7 @@
                 @Html.DisplayNameFor(model => model.Borrowing[0].Book)
             </th>
             <th>
-                @Html.DisplayNameFor(model =>
-                         model.Borrowing[0].Book.Author)
+                @Html.DisplayNameFor(model => model.Borrowing[0].Book.Author)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Borrowing[0].ReturnDate)
@@ -38,8 +38,21 @@
             <td>
                     @Html.DisplayFor(modelItem => item.Book.Borrowing.Book.Author.FullName)
             </td>
+
+
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Title) <!-- Afișează titlul cărții -->
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Author.FullName) <!-- Afișează numele autorului -->
+                </td>
+
+
+
             <td>
-                @Html.DisplayFor(modelItem => item.ReturnDate)
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
