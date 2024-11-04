@@ -18,5 +18,18 @@ namespace Stetco_Bianca_Lab2.Data
         public DbSet<Stetco_Bianca_Lab2.Models.Publisher> Publisher { get; set; } = default!;
         public DbSet<Stetco_Bianca_Lab2.Models.Author> Author { get; set; } = default!;
         public DbSet<Stetco_Bianca_Lab2.Models.Category> Category { get; set; } = default!;
+
+        public DbSet<Stetco_Bianca_Lab2.Models.Borrowing> Borrowing { get; set; } = default!; // Adaugă DbSet pentru Borrowing
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configurarea relației unu-la-unu între Book și Borrowing
+            modelBuilder.Entity<Borrowing>()
+                .HasOne(b => b.Book) // Definirea proprietății de navigare din Borrowing către Book
+                .WithOne(b => b.Borrowing) // Definirea proprietății de navigare din Book către Borrowing
+                .HasForeignKey<Borrowing>(b => b.BookID); // Asigură-te că BookId este cheia străină
+        }
+        public DbSet<Stetco_Bianca_Lab2.Models.Member> Member { get; set; } = default!;
     }
 }
