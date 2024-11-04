@@ -9,9 +9,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<Stetco_Bianca_Lab2Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Stetco_Bianca_Lab2Context") ?? throw new InvalidOperationException("Connection string 'Stetco_Bianca_Lab2Context' not found.")));
 
-builder.Services.AddDbContext<LibraryIdentityContext>(options =>
-
-options.UseSqlServer(builder.Configuration.GetConnectionString("Nume_Pren_Lab2Context") ?? throw new InvalidOperationException("Connection string 'Nume_Pren_Lab2Context' not found.")));
+builder.Services.AddDbContext<LibraryIdentityContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Stetco_Bianca_Lab2Context") ?? throw new InvalidOperationException("Connection string 'Stetco_Bianca_Lab2Context' not found.")));
 
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<LibraryIdentityContext>();
