@@ -24,6 +24,7 @@ namespace Stetco_Bianca_Lab2.Models
 
         [RegularExpression(@"^0\d{2}[-. ]?\d{3}[-. ]?\d{3}$", ErrorMessage = "Telefonul trebuie sa fie de forma '0722-123-123' sau '0722.123.123' sau '0722 123 123'")]
         public string? Phone { get; set; }
+
         [Display(Name = "Full Name")]
         public string? FullName
         {
